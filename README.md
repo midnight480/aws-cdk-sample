@@ -102,3 +102,14 @@ export class SrcStack extends cdk.Stack {
 }
 $
 ```
+### Add Module
+
+```
+npm install @aws-cdk/aws-ec2
+```
+
+### Sample Deploy
+
+```
+cdk deploy -c key_pair=sample
+```
