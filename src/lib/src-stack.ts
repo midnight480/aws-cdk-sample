@@ -69,6 +69,7 @@ export class SrcStack extends cdk.Stack {
      tkySecurityGroup.addEgressRule(ec2.Peer.anyIpv4(), ec2.Port.allTraffic());
      tkySecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.allIcmp());
      tkySecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22));
+     tkySecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(3389));
 
       // ap-northeast-3
 //      const oskSecurityGroup = new SecurityGroup(this, "oskSecurityGroup",{
@@ -80,11 +81,77 @@ export class SrcStack extends cdk.Stack {
 
       // ---- EC2 ----
 
-      const ec2Image = new ec2.AmazonLinuxImage();
+      const ec2Image = new ec2.AmazonLinuxImage({
+                                              cpuType: ec2.AmazonLinuxCpuType.X86_64,
+                                              edition: ec2.AmazonLinuxEdition.STANDARD,
+                                              generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
+                                              storage: ec2.AmazonLinuxStorage.GENERAL_PURPOSE
+                                   });
+      const ec2ImageWin = new ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2019_JAPANESE_FULL_BASE);
 
-      const tkyEc2 = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2a = new ec2.CfnInstance(this, "tkyEc2", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2Image.getImage(this).imageId,
+        networkInterfaces: [{
+          associatePublicIpAddress: true,
+          deviceIndex: "0",
+          groupSet: [tkySecurityGroup.securityGroupId],
+          subnetId: tkySubnet.subnetId
+        }],
+        keyName: this.node.tryGetContext('key_pair')
+      });
+
+      const tkyEc2b = new ec2.CfnInstance(this, "tkyEc2", {
+        instanceType: new ec2.InstanceType("t3.micro").toString(),
+        imageId: ec2Image.getImage(this).imageId,
+        networkInterfaces: [{
+          associatePublicIpAddress: true,
+          deviceIndex: "0",
+          groupSet: [tkySecurityGroup.securityGroupId],
+          subnetId: tkySubnet.subnetId
+        }],
+        keyName: this.node.tryGetContext('key_pair')
+      });
+
+      const tkyEc2c = new ec2.CfnInstance(this, "tkyEc2", {
+        instanceType: new ec2.InstanceType("t3.micro").toString(),
+        imageId: ec2Image.getImage(this).imageId,
+        networkInterfaces: [{
+          associatePublicIpAddress: true,
+          deviceIndex: "0",
+          groupSet: [tkySecurityGroup.securityGroupId],
+          subnetId: tkySubnet.subnetId
+        }],
+        keyName: this.node.tryGetContext('key_pair')
+      });
+
+      const tkyEc2d = new ec2.CfnInstance(this, "tkyEc2", {
+        instanceType: new ec2.InstanceType("t3.micro").toString(),
+        imageId: ec2Image.getImage(this).imageId,
+        networkInterfaces: [{
+          associatePublicIpAddress: true,
+          deviceIndex: "0",
+          groupSet: [tkySecurityGroup.securityGroupId],
+          subnetId: tkySubnet.subnetId
+        }],
+        keyName: this.node.tryGetContext('key_pair')
+      });
+
+      const tkyEc2e = new ec2.CfnInstance(this, "tkyEc2", {
+        instanceType: new ec2.InstanceType("t3.micro").toString(),
+        imageId: ec2ImageWin.getImage(this).imageId,
+        networkInterfaces: [{
+          associatePublicIpAddress: true,
+          deviceIndex: "0",
+          groupSet: [tkySecurityGroup.securityGroupId],
+          subnetId: tkySubnet.subnetId
+        }],
+        keyName: this.node.tryGetContext('key_pair')
+      });
+
+      const tkyEc2f = new ec2.CfnInstance(this, "tkyEc2", {
+        instanceType: new ec2.InstanceType("t3.micro").toString(),
+        imageId: ec2ImageWin.getImage(this).imageId,
         networkInterfaces: [{
           associatePublicIpAddress: true,
           deviceIndex: "0",
@@ -106,8 +173,23 @@ export class SrcStack extends cdk.Stack {
 //       keyName: this.node.tryGetContext('key_pair')
 //     });
 
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2.attrPublicIp });
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2a.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2a.attrPublicIp });
+  
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2b.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2b.attrPublicIp });
+    
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2c.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2c.attrPublicIp });
+
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2d.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2d.attrPublicIp });
+
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2e.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2e.attrPublicIp });
+
+      new cdk.CfnOutput(this, "Id", { value: tkyEc2f.ref});
+      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2f.attrPublicIp });
 
 //      new cdk.CfnOutput(this, "Id", { value: oskEc2.ref});
 //      new cdk.CfnOutput(this, "PublicIp", { value: oskEc2.attrPublicIp });
