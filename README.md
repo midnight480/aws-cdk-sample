@@ -2,13 +2,13 @@
 
 ## Overview
 
-Region: ap-northeast-1(Tokyo), ap-northeast-3(Osaka)
-Resource: VPC, Subnets(Single-AZ), Compute, EIP
-Security Group: allow IPv4 ICMP all
+Region: ap-northeast-1(Tokyo), ap-northeast-3(Osaka)  
+Resource: VPC, Subnets(Single-AZ), Compute, EIP  
+Security Group: allow IPv4 ICMP all, allow IPv4 SSH all , allow IPv4 RDP all 
 
-following:
+<!-- following: -->
 
-![AWS-Env](./images/sampleImage.png) 
+<!--![AWS-Env](./images/sampleImage.png)  -->
 
 ## Enviorment
 
