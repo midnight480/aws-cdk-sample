@@ -89,7 +89,7 @@ export class SrcStack extends cdk.Stack {
                                    });
       const ec2ImageWin = new ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2019_JAPANESE_FULL_BASE);
 
-      const tkyEc2a = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2a = new ec2.CfnInstance(this, "tkyEc2a", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2Image.getImage(this).imageId,
         networkInterfaces: [{
@@ -101,7 +101,7 @@ export class SrcStack extends cdk.Stack {
         keyName: this.node.tryGetContext('key_pair')
       });
 
-      const tkyEc2b = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2b = new ec2.CfnInstance(this, "tkyEc2b", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2Image.getImage(this).imageId,
         networkInterfaces: [{
@@ -113,7 +113,7 @@ export class SrcStack extends cdk.Stack {
         keyName: this.node.tryGetContext('key_pair')
       });
 
-      const tkyEc2c = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2c = new ec2.CfnInstance(this, "tkyEc2c", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2Image.getImage(this).imageId,
         networkInterfaces: [{
@@ -125,7 +125,7 @@ export class SrcStack extends cdk.Stack {
         keyName: this.node.tryGetContext('key_pair')
       });
 
-      const tkyEc2d = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2d = new ec2.CfnInstance(this, "tkyEc2d", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2Image.getImage(this).imageId,
         networkInterfaces: [{
@@ -137,7 +137,7 @@ export class SrcStack extends cdk.Stack {
         keyName: this.node.tryGetContext('key_pair')
       });
 
-      const tkyEc2e = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2e = new ec2.CfnInstance(this, "tkyEc2e", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2ImageWin.getImage(this).imageId,
         networkInterfaces: [{
@@ -149,7 +149,7 @@ export class SrcStack extends cdk.Stack {
         keyName: this.node.tryGetContext('key_pair')
       });
 
-      const tkyEc2f = new ec2.CfnInstance(this, "tkyEc2", {
+      const tkyEc2f = new ec2.CfnInstance(this, "tkyEc2f", {
         instanceType: new ec2.InstanceType("t3.micro").toString(),
         imageId: ec2ImageWin.getImage(this).imageId,
         networkInterfaces: [{
@@ -173,23 +173,23 @@ export class SrcStack extends cdk.Stack {
 //       keyName: this.node.tryGetContext('key_pair')
 //     });
 
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2a.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2a.attrPublicIp });
+      new cdk.CfnOutput(this, "Ida", { value: tkyEc2a.ref});
+      new cdk.CfnOutput(this, "PublicIpa", { value: tkyEc2a.attrPublicIp });
   
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2b.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2b.attrPublicIp });
+      new cdk.CfnOutput(this, "Idb", { value: tkyEc2b.ref});
+      new cdk.CfnOutput(this, "PublicIpb", { value: tkyEc2b.attrPublicIp });
     
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2c.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2c.attrPublicIp });
+      new cdk.CfnOutput(this, "Idc", { value: tkyEc2c.ref});
+      new cdk.CfnOutput(this, "PublicIpc", { value: tkyEc2c.attrPublicIp });
 
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2d.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2d.attrPublicIp });
+      new cdk.CfnOutput(this, "Idd", { value: tkyEc2d.ref});
+      new cdk.CfnOutput(this, "PublicIpd", { value: tkyEc2d.attrPublicIp });
 
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2e.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2e.attrPublicIp });
+      new cdk.CfnOutput(this, "Ide", { value: tkyEc2e.ref});
+      new cdk.CfnOutput(this, "PublicIpe", { value: tkyEc2e.attrPublicIp });
 
-      new cdk.CfnOutput(this, "Id", { value: tkyEc2f.ref});
-      new cdk.CfnOutput(this, "PublicIp", { value: tkyEc2f.attrPublicIp });
+      new cdk.CfnOutput(this, "Idf", { value: tkyEc2f.ref});
+      new cdk.CfnOutput(this, "PublicIpf", { value: tkyEc2f.attrPublicIp });
 
 //      new cdk.CfnOutput(this, "Id", { value: oskEc2.ref});
 //      new cdk.CfnOutput(this, "PublicIp", { value: oskEc2.attrPublicIp });

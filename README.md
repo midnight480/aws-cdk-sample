@@ -1,5 +1,12 @@
 # aws-cdk-sample
 
+## Cfn File
+
+[cfn.yml](./cfn-template/cfn.yml)
+
+note: 
+`cdk synth >> ..\cfn-template\cfn.yml`
+
 ## Overview
 
 Region: ap-northeast-1(Tokyo), ap-northeast-3(Osaka)  
