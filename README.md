@@ -112,11 +112,49 @@ $
 ### Add Module
 
 ```
-npm install @aws-cdk/aws-ec2
+$ cdk --version
+1.101.0 (build 149f0fc)
+```
+
+```
+npm install @aws-cdk/aws-ec2@x.xxx.xxx
+```
+
+or 
+
+```
+ls -la ./package.json
+npm install
 ```
 
 ### Sample Deploy
 
 ```
-cdk deploy -c key_pair=sample
+cdk deploy TokyoVpc -c key_pair=sample
+```
+
+```
+cdk deploy OsakaVpc -c key_pair=sample
+```
+
+### Profile
+
+*Use TokyoVpc
+
+```
+$ aws configure
+AWS Access Key ID [None]: 
+AWS Secret Access Key [None]: 
+Default region name [ap-northeast-1]: 
+Default output format [None]: 
+```
+
+*Use OsakaVpc
+
+```
+$ aws configure
+AWS Access Key ID [None]: 
+AWS Secret Access Key [None]: 
+Default region name [ap-northeast-3]: 
+Default output format [None]: 
 ```
